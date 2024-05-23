@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container mt-3">
         <h1>{{ $project->name }}</h1>
         <p>{{ $project->description }}</p>
 
@@ -45,7 +45,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="{{ route('projects.storeTask', $project) }}" method="POST" id="taskForm">
+                        <form action="{{ route('tasks.store', $project) }}" method="POST" id="taskForm">
                             @csrf
                             <div class="mb-3">
                                 <label for="title" class="form-label">Title:</label>

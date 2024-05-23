@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use App\Models\User;
-use App\Models\Task;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -81,21 +80,11 @@ class ProjectController extends Controller
             ->with('success', 'Task created successfully.');
     }
 
-    public function toggleTaskCompletion(Task $task)
+    public function showProfile()
     {
-        $task->completed = !$task->completed;
-        $task->save();
+        $userId = auth()->id(); // Ottieni l'ID dell'utente autenticato
 
-        return redirect()->route('projects.show', $task->project)
-            ->with('success', 'Task status updated successfully.');
-    }
-
-    public function destroyTask(Task $task)
-    {
-        $project = $task->project;
-        $task->delete();
-
-        return redirect()->route('projects.show', $project)
-            ->with('success', 'Task deleted successfully.');
+        // Ora passa $userId alla vista
+        return view('nome_vista', ['userId' => $userId]);
     }
 }
