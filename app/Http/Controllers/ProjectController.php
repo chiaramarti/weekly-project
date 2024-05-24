@@ -79,12 +79,4 @@ class ProjectController extends Controller
         return redirect()->route('projects.show', $project)
             ->with('success', 'Task created successfully.');
     }
-
-    public function showProfile()
-    {
-        $userId = auth()->id(); // Ottieni l'ID dell'utente autenticato
-
-        // Ora passa $userId alla vista
-        return view('nome_vista', ['userId' => $userId]);
-    }
 }
