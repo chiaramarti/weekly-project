@@ -18,13 +18,10 @@
                                 <label for="description" class="form-label">Description:</label>
                                 <textarea class="form-control" name="description" id="description"></textarea>
                             </div>
-                            <div class="mb-3">
+                            <div class="mb-3 d-none">
                                 <label for="user_id" class="form-label">Select User:</label>
                                 <select class="form-select" name="user_id" id="user_id" required>
-                                    <option value="">Select User</option>
-                                    @foreach ($users as $user)
-                                        <option value="{{ $user->id }}">{{ $user->name }}</option>
-                                    @endforeach
+                                    <option value="{{ auth()->user()->id }}">{{ auth()->user()->name }}</option>
                                 </select>
                             </div>
                             <button type="submit" class="btn btn-primary">Create</button>
